@@ -1,0 +1,129 @@
+* {
+  border-radius: 0;
+  font-size: 14px;
+}
+
+window#waybar {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+  /*
+  transition-duration: 0.5s;
+  transition-property: background-color;
+  */
+}
+
+window#waybar.top .modules-left {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+window#waybar.top .modules-right {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+window#waybar.top .modules-center {
+  margin-top: 10px;
+}
+
+window#waybar.bottom .modules-left {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+window#waybar.bottom .modules-right {
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+window#waybar.bottom .modules-center {
+  margin-bottom: 10px;
+}
+
+/* base styling */
+#custom-weather,
+#clock,
+#custom-icon-lock,
+#custom-icon-exit,
+#custom-icon-music,
+#custom-icon-music-prev,
+#custom-icon-music-next,
+#custom-icon-music-pause,
+#custom-icon-music-play,
+#custom-icon-music-shuffle,
+#custom-icon-music-stop,
+#custom-icon-browser,
+#custom-icon-google,
+#custom-icon-wikipedia,
+#custom-icon-matrix,
+#custom-icon-terminal,
+#custom-icon-gimp,
+#custom-icon-pymol,
+#custom-icon-blender,
+#custom-thermals,
+#memory,
+#disk,
+#cpu,
+#workspaces button {
+  background-color: rgba(38, 50, 56, 1);
+  border: 1px solid #c7d9f6;
+  color: #fff;
+  padding: 0px 7px 0px 7px;
+}
+
+/* left aligned */
+#memory,
+#disk,
+#workspaces button {
+  margin-right: 10px;
+}
+
+/* right aligned */
+#custom-weather,
+#clock,
+#custom-icon-lock,
+#custom-icon-exit,
+#custom-icon-music,
+#custom-icon-music-prev,
+#custom-icon-music-next,
+#custom-icon-music-pause,
+#custom-icon-music-play,
+#custom-icon-music-shuffle,
+#custom-icon-music-stop,
+#custom-icon-browser,
+#custom-icon-google,
+#custom-icon-wikipedia,
+#custom-icon-matrix,
+#custom-icon-terminal,
+#custom-icon-gimp,
+#custom-icon-pymol,
+#custom-icon-blender,
+#cpu,
+#custom-thermals {
+  margin-left: 10px;
+}
+
+/* size tweaks */
+#workspaces button {
+  padding: 0px 4px 0px 4px;
+}
+
+/* active effect */
+#workspaces button.focused {
+  background: #086eb1;
+}
+
+/* urgent style */
+#workspaces button.urgent {
+  background: rgba(38, 50, 56, 1);
+  color: #fbbf4a;
+  border: 1px solid #fbbf4a;
+}
+
+#custom-information,
+#custom-widget-weather {
+  font-family: DejaVu Sans Mono;
+  margin: 10px;
+  padding: 10px;
+  background-color: rgba(38, 50, 56, 0.5);
+}

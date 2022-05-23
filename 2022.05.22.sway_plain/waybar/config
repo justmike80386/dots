@@ -1,0 +1,146 @@
+[
+{
+    "position": "top",
+    "height": 36,
+    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-center": [],
+    "modules-right": ["custom/weather", "clock#date", "clock#time", "custom/icon-lock", "custom/icon-exit"],
+    "fixed-center": true,
+    "sway/workspaces": {
+        "all-outputs": true,
+	"disable-scroll-wraparound": true,
+	"smooth-scrolling-threshold": 0,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5",
+            "6": "6",
+            "7": "7",
+            "8": "8",
+            "9": "9",
+            "10": "0",
+            "11": "A",
+            "12": "B",
+            "13": "C",
+            "14": "D",
+            "15": "E",
+            "16": "F",
+            "17": "G",
+            "18": "H",
+            "19": "I",
+            "20": "J",
+            "21": "K",
+            "22": "L",
+        }
+    },
+    "sway/mode": {
+        "format": "{}"
+    },
+    "clock#time": {
+    	"interval": 1,
+        "format": " {:%H:%M}"
+    },
+    "clock#date": {
+    	"interval": 1,
+        "format": " {:%m/%d/%Y}"
+    },
+    "custom/weather": {
+    	"format": "{}",
+        "interval": 600,
+        "exec": "curl 'https://wttr.in/?format=1&m' | tr -s ' '", // weather
+        //"exec": "curl 'https://wttr.in/?format=3&m'", // city + weather
+    },
+    "custom/icon-exit": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes' 'swaymsg exit'",
+    },
+    "custom/icon-lock": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec swaylock -f -c 000000'",
+    },
+
+},
+{
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 36, // Waybar height (to be removed for auto height)
+    "modules-left": ["memory", "disk#ssd", "disk#nas"],
+    "modules-center": ["custom/icon-browser", "custom/icon-matrix", "custom/icon-google", "custom/icon-wikipedia", "custom/icon-terminal", "custom/icon-music", "custom/icon-gimp", "custom/icon-pymol", "custom/icon-blender"],
+    "modules-right": ["cpu", "custom/thermals"],
+    "cpu": {
+	"interval": 1,
+        "format": " {load0:1.2f} {load1:1.2f} {load2:1.2f}",
+    },
+    "memory": {
+        "format": " {avail:1.0f} GiB"
+    },
+    "disk#ssd": {
+	"interval": 30,
+	"path": "/",
+        "format": " {free}"
+    },
+    "disk#nas": {
+	"interval": 30,
+	"path": "/mnt/nas",
+        "format": " {free}"
+    },
+    "custom/thermals": {
+    	"format": "{} °C",
+        "interval": 5,
+	"exec": "$HOME/.config/waybar/thermals.sh"
+    },
+    "custom/icon-browser": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec falkon -w'",
+	"on-click-right": "swaymsg 'exec falkon -i -w'",
+    },
+    "custom/icon-google": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec falkon https://www.google.com/'",
+	"on-click-right": "swaymsg 'exec falkon -i https://www.google.com/'",
+    },
+    "custom/icon-wikipedia": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec falkon https://en.wikipedia.org/'",
+	"on-click-right": "swaymsg 'exec falkon -i https://en.wikipedia.org/'",
+    },
+    "custom/icon-matrix": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec falkon https://app.element.io/'",
+	"on-click-right": "swaymsg 'exec falkon -i https://app.element.io/'",
+    },
+    "custom/icon-music": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec deadbeef'",
+    },
+    "custom/icon-terminal": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec alacritty'",
+    },
+    "custom/icon-gimp": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec gimp'",
+    },
+    "custom/icon-pymol": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec QT_QPA_PLATFORM=xcb pymol -q'",
+    },
+    "custom/icon-blender": {
+        "format": "",
+	"tooltip": false,
+	"on-click": "swaymsg 'exec blender'",
+    },
+}
+]

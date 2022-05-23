@@ -1,0 +1,56 @@
+diff -rud a/include/util/format.hpp b/include/util/format.hpp
+--- a/include/util/format.hpp	2022-05-19 14:45:29.884342000 -0600
++++ b/include/util/format.hpp	2022-05-19 15:38:30.966498000 -0600
+@@ -74,7 +74,7 @@
+               break;
+             case 0:
+             default:
+-              format = "{coefficient:.3g}{prefix}{unit}";
++              format = "{coefficient:1.0f} {prefix}{unit}";
+               break;
+           }
+           return format_to(ctx.out(), format
+diff -rud a/src/modules/cpu/common.cpp b/src/modules/cpu/common.cpp
+--- a/src/modules/cpu/common.cpp	2022-05-19 14:45:29.893209000 -0600
++++ b/src/modules/cpu/common.cpp	2022-05-19 16:02:52.413370000 -0600
+@@ -19,7 +19,10 @@
+ 
+ auto waybar::modules::Cpu::update() -> void {
+   // TODO: as creating dynamic fmt::arg arrays is buggy we have to calc both
+-  auto cpu_load = getCpuLoad();
++  double cpu_load[3];
++  if (getloadavg(cpu_load, 3) == -1) {
++	  throw std::runtime_error("Can't get Cpu load");
++  }
+   auto [cpu_usage, tooltip] = getCpuUsage();
+   auto [max_frequency, min_frequency, avg_frequency] = getCpuFrequency();
+   if (tooltipEnabled()) {
+@@ -38,8 +41,9 @@
+     event_box_.show();
+     auto icons = std::vector<std::string>{state};
+     fmt::dynamic_format_arg_store<fmt::format_context> store;
+-    store.push_back(fmt::arg("load", cpu_load));
+-    store.push_back(fmt::arg("load", cpu_load));
++    store.push_back(fmt::arg("load0", cpu_load[0]));
++    store.push_back(fmt::arg("load1", cpu_load[1]));
++    store.push_back(fmt::arg("load2", cpu_load[2]));
+     store.push_back(fmt::arg("usage", total_usage));
+     store.push_back(fmt::arg("icon", getIcon(total_usage, icons)));
+     store.push_back(fmt::arg("max_frequency", max_frequency));
+diff -rud a/src/modules/custom.cpp b/src/modules/custom.cpp
+--- a/src/modules/custom.cpp	2022-05-19 14:45:29.892723000 -0600
++++ b/src/modules/custom.cpp	2022-05-21 15:01:07.497657000 -0600
+@@ -167,12 +167,8 @@
+       }
+       tooltip_ = line;
+       class_.clear();
+-    } else if (i == 1) {
+-      tooltip_ = line;
+-    } else if (i == 2) {
+-      class_.push_back(line);
+     } else {
+-      break;
++      text_ += "\n" + line;
+     }
+     i++;
+   }
