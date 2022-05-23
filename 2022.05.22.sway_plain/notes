@@ -1,0 +1,3 @@
+the waybar patch changes some number formatting and splits splits cpu load into 3 values
+it also lets the custom module read multiple lines from a script output (unused)
+waybar version: Waybar v0.9.12 (FreeBSD-13.0-RELEASE/ports)
