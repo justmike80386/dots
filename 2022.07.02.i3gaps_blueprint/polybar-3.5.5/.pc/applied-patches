@@ -1,0 +1,5 @@
+dont_build_html_doc.patch
+disable_config_generation.patch
+redact_build_flags.patch
+my_border.patch
+my_filesize.patch

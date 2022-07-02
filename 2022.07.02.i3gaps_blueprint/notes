@@ -1,0 +1,7 @@
+this was setup more of as an experiment to test the look and feel of the interface. if you want to try it out, you're on your own.
+
+fragile elements:
+	the border bar was manually added to the wallpaper (not part of i3 / polybar).
+	i3, I tweaked window border behavior to fill in the "gaps" with background color to prevent the wallpaper from shining through in between. I also added a drop shadow to highlight the active window. It all works fine, but nested tab layouts (which I only realize existed afterwards) have an issue I haven't bothered fixing.
+
+there was an extra flag within the 'pm' pymol launcher script to hide the menus, don't remember what it was though.

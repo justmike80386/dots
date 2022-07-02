@@ -1,0 +1,70 @@
+setup my hacky border mod
+--- a/include/cairo/context.hpp
++++ b/include/cairo/context.hpp
+@@ -141,6 +141,8 @@
+       utils::unicode_charlist chars;
+       utils::utf8_to_ucs4((const unsigned char*)utf8.c_str(), chars);
+ 
++      unsigned int first = 1;
++      unsigned int last = 0;
+       while (!chars.empty()) {
+         auto remaining = chars.size();
+         for (auto&& f : fns) {
+@@ -163,6 +165,10 @@
+             end++;
+           }
+ 
++	  if(end == chars.end()) {
++	  	last = 1;
++	  }
++
+           // Use the font
+           f->use();
+ 
+@@ -179,6 +185,46 @@
+                 t.bg_rect.w + extents.x_advance, t.bg_rect.h);
+             cairo_fill(m_c);
+             restore();
++
++	    if(first == 1) {
++		    // left
++		    save();
++		    cairo_set_operator(m_c, t.bg_operator);
++		    *this << rgba{0xFFFFFFFF};
++		    cairo_rectangle(m_c, t.bg_rect.x + *t.x_advance, t.bg_rect.y + *t.y_advance,
++			2, t.bg_rect.h);
++		    cairo_fill(m_c);
++		    restore();
++		    first = 0;
++	    }
++
++	    if(last == 1) {
++		    //right
++		    save();
++		    cairo_set_operator(m_c, t.bg_operator);
++		    *this << rgba{0xFFFFFFFF};
++		    cairo_rectangle(m_c, t.bg_rect.x + *t.x_advance + t.bg_rect.w + extents.x_advance - 2, t.bg_rect.y + *t.y_advance,
++			2, t.bg_rect.h);
++		    cairo_fill(m_c);
++		    restore();
++	    }
++
++	    // top
++	    save();
++	    cairo_set_operator(m_c, t.bg_operator);
++	    *this << rgba{0xFFFFFFFF};
++	    cairo_rectangle(m_c, t.bg_rect.x + *t.x_advance, t.bg_rect.y + *t.y_advance,
++		t.bg_rect.w + extents.x_advance, 2);
++	    cairo_fill(m_c);
++	    restore();
++	    // bottom
++	    save();
++	    cairo_set_operator(m_c, t.bg_operator);
++	    *this << rgba{0xFFFFFFFF};
++	    cairo_rectangle(m_c, t.bg_rect.x + *t.x_advance, t.bg_rect.y + *t.y_advance + t.bg_rect.h - 2,
++		t.bg_rect.w + extents.x_advance, 2);
++	    cairo_fill(m_c);
++	    restore();
+           }
+ 
+           // Render subset

@@ -1,0 +1,101 @@
+polybar (3.5.5-1) unstable; urgency=medium
+
+  * New upstream version 3.5.5
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Tue, 02 Mar 2021 02:52:57 +0530
+
+polybar (3.5.4-1) unstable; urgency=medium
+
+  * New upstream version 3.5.4
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Thu, 07 Jan 2021 19:26:45 +0530
+
+polybar (3.5.3-1) unstable; urgency=medium
+
+  * New upstream version 3.5.3
+  * Drop BD on git
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Thu, 24 Dec 2020 00:31:51 +0530
+
+polybar (3.5.2-1) unstable; urgency=medium
+
+  * New upstream version 3.5.2
+  * d/watch: Upstream now provides compressed tarballs
+
+ -- Samuel Henrique <samueloph@debian.org>  Tue, 22 Dec 2020 00:11:49 +0000
+
+polybar (3.5.0-2) unstable; urgency=medium
+
+  [ Adrian Bunk ]
+  * Link against atomic on platforms that doesn't have __atomic*
+    (closes: #976988)
+
+ -- Samuel Henrique <samueloph@debian.org>  Wed, 09 Dec 2020 18:23:48 +0000
+
+polybar (3.5.0-1) unstable; urgency=medium
+
+  [ Utkarsh Gupta ]
+  * New upstream version 3.5.0
+  * Drop patch that has been merged upstream
+  * Refresh d/patches
+
+  [ Samuel Henrique ]
+  * Bump Standards-Version to 4.5.1
+  * d/control: Add git build-dep
+  * d/p/disable_config_generation.patch: Add Forwarded field with
+    'not-needed' value
+  * d/p/dont_build_html_doc.patch: Add Forwarded field with 'not-needed'
+    value
+  * d/copyright: Remove mention of libjsoncpp, not vendored anymore
+
+ -- Samuel Henrique <samueloph@debian.org>  Tue, 08 Dec 2020 18:47:21 +0000
+
+polybar (3.4.3-2) unstable; urgency=medium
+
+  * With this release, the only reproducible build issue left is a differing
+    NT_GNU_BUILD_ID.
+  * d/rules: Add reproducible=+fixfilepath flag for reproducibility.
+  * d/p/redact_build_flags.patch: New patch for reproducible builds.
+  * d/watch: Fix d/watch to correctly get upstream's tarball.
+
+ -- Samuel Henrique <samueloph@debian.org>  Tue, 09 Jun 2020 23:04:58 +0100
+
+polybar (3.4.3-1) unstable; urgency=medium
+
+  [ Samuel Henrique ]
+  * d/watch: Fix to get the correct tarball with the git submodules included
+
+  [ Utkarsh Gupta ]
+  * New upstream version 3.4.3
+  * Bump dh-compat to 13
+  * Refresh d/patches
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Fri, 15 May 2020 06:37:45 +0530
+
+polybar (3.4.2-4) unstable; urgency=medium
+
+  * Source-only upload.
+
+ -- Utkarsh Gupta <utkarsh@debian.org>  Mon, 13 Apr 2020 01:51:36 +0530
+
+polybar (3.4.2-3) unstable; urgency=medium
+
+  * Stop generating example config at build time
+  * d/p/disable_config_generation.patch: New patch, unblock reproducible build
+
+ -- Samuel Henrique <samueloph@debian.org>  Sun, 12 Apr 2020 19:13:27 +0100
+
+polybar (3.4.2-2) unstable; urgency=medium
+
+  * d/copyright: Add license information for lib/i3ipcpp/3rd/auss
+
+ -- Samuel Henrique <samueloph@debian.org>  Thu, 09 Apr 2020 22:14:11 +0100
+
+polybar (3.4.2-1) unstable; urgency=medium
+
+  * Initial release. (Closes: #856179),
+    Many thanks to Ayose <ayosec@gmail.com> and Jason Pleau <jason@jpleau.ca>
+    for having worked on the packaging of polybar for Debian, which was used
+    as a base for this one.
+
+ -- Samuel Henrique <samueloph@debian.org>  Sat, 22 Feb 2020 16:14:56 +0000

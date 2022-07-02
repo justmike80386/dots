@@ -1,0 +1,5 @@
+lib/xpp/generators/__pycache__/
+lib/xpp/include/xpp/proto/composite.hpp
+lib/xpp/include/xpp/proto/randr.hpp
+lib/xpp/include/xpp/proto/x.hpp
+lib/xpp/include/xpp/proto/xkb.hpp

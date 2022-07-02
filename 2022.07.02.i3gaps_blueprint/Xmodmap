@@ -1,0 +1,5 @@
+! Convert Alt_L to Super_L, Alt_R to Alt_L
+clear mod1
+keycode 64 = Super_L
+keycode 108 = Alt_L
+add mod1 = Alt_L Alt_R Meta_L

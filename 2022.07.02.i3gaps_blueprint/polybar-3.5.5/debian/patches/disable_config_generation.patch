@@ -1,0 +1,28 @@
+Description: Disable example config generation at build time
+ This patch is needed for reproducible builds
+Author: Samuel Henrique <samueloph@debian.org>
+Forwarded: not-needed
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -155,13 +155,13 @@
+ # }}}
+ # Configure and install {{{
+ 
+-configure_file(
+-  ${CMAKE_CURRENT_LIST_DIR}/config.cmake
+-  ${CMAKE_CURRENT_LIST_DIR}/config
+-  ESCAPE_QUOTES @ONLY)
+-
+-install(FILES config
+-  DESTINATION ${CMAKE_INSTALL_DOCDIR}
+-  COMPONENT config)
++#configure_file(
++#  ${CMAKE_CURRENT_LIST_DIR}/config.cmake
++#  ${CMAKE_CURRENT_LIST_DIR}/config
++#  ESCAPE_QUOTES @ONLY)
++#
++#install(FILES config
++#  DESTINATION ${CMAKE_INSTALL_DOCDIR}
++#  COMPONENT config)
+ 
+ # }}}

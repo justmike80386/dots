@@ -1,0 +1,2 @@
+version=4
+https://github.com/polybar/polybar/releases .*/polybar-?(\d\S+)\.tar.gz

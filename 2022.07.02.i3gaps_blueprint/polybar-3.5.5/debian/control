@@ -1,0 +1,45 @@
+Source: polybar
+Section: x11
+Priority: optional
+Homepage: https://polybar.github.io/
+Maintainer: Samuel Henrique <samueloph@debian.org>
+Uploaders: Utkarsh Gupta <utkarsh@debian.org>
+Build-Depends: cmake,
+               debhelper-compat (= 13),
+               i3-wm,
+               libasound2-dev,
+               libcairo2-dev,
+               libcurl4-openssl-dev,
+               libjsoncpp-dev,
+               libmpdclient-dev,
+               libnl-genl-3-dev,
+               libpulse-dev,
+               libxcb-composite0-dev,
+               libxcb-cursor-dev,
+               libxcb-damage0-dev,
+               libxcb-ewmh-dev,
+               libxcb-icccm4-dev,
+               libxcb-image0-dev,
+               libxcb-randr0-dev,
+               libxcb-render0-dev,
+               libxcb-sync-dev,
+               libxcb-util0-dev,
+               libxcb-xkb-dev,
+               libxcb-xrm-dev,
+               pkg-config,
+               python3-sphinx,
+               python3-xcbgen,
+               xcb-proto
+Standards-Version: 4.5.1
+Rules-Requires-Root: no
+Vcs-Browser: https://salsa.debian.org/debian/polybar
+Vcs-Git: https://salsa.debian.org/debian/polybar.git
+
+Package: polybar
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends}
+Description: Fast and easy-to-use tool for creating status bars
+ Polybar aims to help users build beautiful and highly customizable status bars
+ for their desktop environment, without the need of having a black belt in
+ shell scripting.

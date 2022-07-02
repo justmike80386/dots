@@ -1,0 +1,8 @@
+[submodule "lib/i3ipcpp"]
+	path = lib/i3ipcpp
+	url = https://github.com/polybar/i3ipcpp
+	branch = master
+[submodule "lib/xpp"]
+	path = lib/xpp
+	url = https://github.com/polybar/xpp
+	branch = master

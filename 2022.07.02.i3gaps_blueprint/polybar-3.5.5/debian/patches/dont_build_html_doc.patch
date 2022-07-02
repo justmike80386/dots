@@ -1,0 +1,27 @@
+Description: Don't generate html docs as they only ship the manpage
+Author: Samuel Henrique <samueloph@debian.org>
+Forwarded: not-needed
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -16,7 +16,7 @@
+ configure_file(conf.py conf.py @ONLY)
+ 
+ # We want to run `sphinx-build` with the following builders
+-set(doc_builders "html" "man")
++set(doc_builders "man")
+ 
+ # Name of all documentation targets
+ set(doc_targets "")
+@@ -56,9 +56,9 @@
+   set(PROJECT_NAME "polybar-doc")
+ endif()
+ 
+-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html/
+-  DESTINATION ${CMAKE_INSTALL_DOCDIR}
+-  COMPONENT doc)
++#install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html/
++#  DESTINATION ${CMAKE_INSTALL_DOCDIR}
++#  COMPONENT doc)
+ 
+ install(FILES ${CMAKE_CURRENT_BINARY_DIR}/man/polybar.1
+   DESTINATION ${CMAKE_INSTALL_MANDIR}/man1

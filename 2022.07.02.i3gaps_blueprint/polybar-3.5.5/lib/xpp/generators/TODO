@@ -1,0 +1,53 @@
+TODO:
+
+* Build with python 3
+
+* valueparams
+
+* serialized fields (e.g. xcb_sync_create_alarm_value_list_serialize)
+  (is this necessary?)
+
+* specialize iterator for non-vector data structures:
+  Instead of converting to vector, check if it is possible to send the data
+  directly through the socket (e.g. map { key, value }:
+  for (k,v : map) { socket_send(v); } ...
+
+* XInput Event handling: Am I doing this right? (Multiple switches etc.)
+
+* Adapter classes for drawable, window, pixmap, atom, font, etc.
+
+$ grep xidtype *.xml
+damage.xml:  <xidtype name="DAMAGE" />
+glx.xml:     <xidtype name="PIXMAP" />
+glx.xml:     <xidtype name="CONTEXT" />
+glx.xml:     <xidtype name="PBUFFER" />
+glx.xml:     <xidtype name="WINDOW" />
+glx.xml:     <xidtype name="FBCONFIG" />
+present.xml: <xidtype name="EVENT"/>
+randr.xml:   <xidtype name="MODE" />
+randr.xml:   <xidtype name="CRTC" />
+randr.xml:   <xidtype name="OUTPUT" />
+randr.xml:   <xidtype name="PROVIDER" />
+record.xml:  <xidtype name="CONTEXT" />
+render.xml:  <xidtype name="GLYPHSET" />
+render.xml:  <xidtype name="PICTURE" />
+render.xml:  <xidtype name="PICTFORMAT" />
+shm.xml:     <xidtype name="SEG" />
+sync.xml:    <xidtype name="ALARM" />
+sync.xml:    <xidtype name="COUNTER" />
+sync.xml:    <xidtype name="FENCE" />
+xfixes.xml:  <xidtype name="REGION" />
+xfixes.xml:  <xidtype name="BARRIER" />
+xprint.xml:  <xidtype name="PCONTEXT" />
+xproto.xml:  <xidtype name="WINDOW" />
+xproto.xml:  <xidtype name="PIXMAP" />
+xproto.xml:  <xidtype name="CURSOR" />
+xproto.xml:  <xidtype name="FONT" />
+xproto.xml:  <xidtype name="GCONTEXT" />
+xproto.xml:  <xidtype name="COLORMAP" />
+xproto.xml:  <xidtype name="ATOM" />
+xvmc.xml:    <xidtype name="CONTEXT" />
+xvmc.xml:    <xidtype name="SURFACE" />
+xvmc.xml:    <xidtype name="SUBPICTURE" />
+xv.xml:      <xidtype name="PORT" />
+xv.xml:      <xidtype name="ENCODING" />

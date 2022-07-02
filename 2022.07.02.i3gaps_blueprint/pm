@@ -1,0 +1,40 @@
+#!/bin/bash
+
+if [ -d $HOME/.freemol/trunk/freemol ]; then
+	export FREEMOL=$HOME/.freemol/trunk/freemol
+fi
+
+# turn on sequence view
+cmds="set seq_view"
+
+files=0
+
+for arg in $@; do
+	if [ -f $arg ]; then
+		# load files
+		cmds="$cmds; load $arg";
+		files=1
+	else
+		# fetch pdbs
+		cmds="$cmds; fetch $arg, async=0";
+	fi
+	# color first file grey
+	if [ "$arg" == "$1" ]; then
+		cmds="$cmds; bg_color 0x003153; set seq_view_label_color, white; util.cbaw";
+	fi
+done
+
+# show lines
+cmds="$cmds; show lines";
+
+if [ "$files" -eq "1" ]; then
+	pymol -x -d "$cmds"
+else
+	# we're fetching PDBs, move to cache folder
+	if [ ! -d $HOME/.cache/pymol ]; then
+		mkdir -p $HOME/.cache/pymol
+	fi
+	pushd $HOME/.cache/pymol
+	pymol -qxiP -d "$cmds"
+	popd
+fi
